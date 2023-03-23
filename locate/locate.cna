@@ -1,0 +1,34 @@
+alias locate{
+	local('@data $result')
+
+	@data = readAll(exec(@("locate","--",$2)));
+	if(size(@data) >= 50)
+	{
+		blog($1, "\n\nQuery returned too many results! Try being more specific.\n");
+	}
+	else
+	{
+		blog($1, "\n\nLocal search results matching \"" . $2 . "\":\n");
+		foreach $result (@data)
+		{
+			blog($1, $result);
+		}
+	}
+}
+
+beacon_command_register(
+	"locate",
+	"Search the host OS for files/utilities",
+	"
+Command: locate
+Summary: Query the host OS for filesystem paths that match the search parameter.
+         This is useful when looking for a file path to give to another alias when tab-complete is not available.
+         This command calls the OS 'locate' command and displays the results. Note that he host OS locate command is case sensitive.
+         If locate is not retrieving results you know exist, run \'updatedb\' in a terminal to refresh the database that locate queries.
+
+Usage:   locate <search term>
+         <search term>             Required. A term to locate matches for on the host OS filesystem.
+
+         Example: locate Rubeus.exe                     <- This example will query the OS for files matching Rubeus.exe
+"
+);
