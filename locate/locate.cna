@@ -8,7 +8,7 @@ alias locate{
 		return;
 	}
 
-	@data = readAll(exec(@("locate","--",$2)));
+	@data = readAll(exec(@("locate","-i","--",$2)));
 	if(size(@data) >= 50)
 	{
 		blog($1, "\n\nQuery returned too many results! Try being more specific.\n");
