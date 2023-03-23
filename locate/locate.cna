@@ -23,12 +23,12 @@ beacon_command_register(
 Command: locate
 Summary: Query the host OS for filesystem paths that match the search parameter.
          This is useful when looking for a file path to give to another alias when tab-complete is not available.
-         This command calls the OS 'locate' command and displays the results. Note that he host OS locate command is case sensitive.
+         This command calls the OS 'locate' command and displays the results. Note that the host OS locate command is case sensitive.
          If locate is not retrieving results you know exist, run \'updatedb\' in a terminal to refresh the database that locate queries.
 
 Usage:   locate <search term>
-         <search term>             Required. A term to locate matches for on the host OS filesystem.
+         <search term>                  Required. A term to locate matches for on the host OS filesystem.
 
-         Example: locate Rubeus.exe                     <- This example will query the OS for files matching Rubeus.exe
+         Example: locate Rubeus.exe     <- This example will query the OS for files matching Rubeus.exe
 "
 );
