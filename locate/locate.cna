@@ -1,6 +1,13 @@
 alias locate{
 	local('@data $result')
 
+	if(size(@_) != 2)
+	{
+		berror($1, "Incorrect usage!");
+		berror($1, beacon_command_detail("locate"));
+		return;
+	}
+
 	@data = readAll(exec(@("locate","--",$2)));
 	if(size(@data) >= 50)
 	{
